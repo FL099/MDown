@@ -12,7 +12,7 @@ public class ConvertFromMDController {
 
     @GetMapping
     public String showOptions(){
-        return "{ \"POSToptions\" : [ \"convert to html\", \"convert to pdf\"] }";
+        return "{ \"POSToptions\" : [ \"/html: convert to html\", \"/pdf: convert to pdf\"] }";
     }
 
     @PostMapping("/html")

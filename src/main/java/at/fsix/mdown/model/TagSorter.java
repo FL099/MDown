@@ -38,4 +38,7 @@ public class TagSorter {
         }
         return name;
     }
+
+    public static String fromPdf(String[] lines){return null;}
+    public static String fromDocx(String[] lines){return null;}
 }

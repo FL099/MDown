@@ -25,6 +25,12 @@ public class MarkedUpDocument {
             case html:
                 this.name = TagSorter.fromHTML(lines);
                 break;
+            case pdf:
+                this.name = TagSorter.fromPdf(lines);
+                break;
+            case docx:
+                this.name = TagSorter.fromDocx(lines);
+                break;
             default:
                 this.name = TagSorter.fromMD(lines);
                 break;
@@ -36,7 +42,7 @@ public class MarkedUpDocument {
     }
 
     public MarkedUpDocument(String text){
-        this(text, "", FileType.html, "utf-8");
+        this(text, "", FileType.none, "utf-8");
     }
 
     public String getName() {
@@ -77,5 +83,9 @@ public class MarkedUpDocument {
 
     public void setEncoding(String encoding) {
         this.encoding = encoding;
+    }
+
+    public String toString(){
+        return name + "\n" + encoding; // TODO
     }
 }

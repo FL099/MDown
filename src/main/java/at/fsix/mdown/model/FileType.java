@@ -5,5 +5,6 @@ public enum FileType {
     html,
     pdf,
     docx,
-    txt
+    txt,
+    none
 }

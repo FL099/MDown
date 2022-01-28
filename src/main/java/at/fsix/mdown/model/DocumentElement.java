@@ -27,6 +27,7 @@ public class DocumentElement {
         this.id = id;
         this.content = content;
         this.tag = tag;
+        this.childOf = childOf;
     }
 
     /**
@@ -37,6 +38,16 @@ public class DocumentElement {
      */
     public DocumentElement(String id, String content, ElementTag tag){
         this(id, content, tag, "");
+    }
+
+    /**
+     *
+     * @param content The Elements content
+     * @param tag What kind of element it is (e.g. html tag)
+     * @param childOf what is the parent Element
+     */
+    public DocumentElement(String content, ElementTag tag, String childOf){
+        this("", content, tag, childOf);
     }
 
     /**
@@ -77,12 +88,10 @@ public class DocumentElement {
     }
 
     public void setContentElements(DocumentElement contentElement) {
-        if (this.contentElements != null && !this.contentElements.isEmpty()){
-            this.contentElements.add(contentElement);
-        }else {
+        if (this.contentElements == null || this.contentElements.isEmpty()) {
             this.contentElements = new ArrayList<>();
-            this.contentElements.add(contentElement);
         }
+        this.contentElements.add(contentElement);
     }
 
     public String getChildOf() {
@@ -95,5 +104,28 @@ public class DocumentElement {
 
     public String toHTMLString(){
         return String.format("<%s id=\"%s\">%s</%s>", tag.toString(), id, content, tag.toString());
+    }
+
+    public String toString(){
+        StringBuilder str = new StringBuilder();
+        str.append("id: ");
+        str.append(id);
+        str.append(", content: ");
+        str.append(content);
+        str.append(", tag: ");
+        str.append(tag);
+        str.append(", parent: ");
+        str.append(childOf);
+        str.append(", contentElements: {");
+        if (contentElements != null){
+            if (!contentElements.isEmpty()){
+                for (DocumentElement el :
+                        contentElements) {
+                    str.append(contentElements.toString());
+                }
+            }
+        }
+        str.append("},\n");
+        return str.toString();
     }
 }

@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 public class ConvertFromMDService implements IConvertFromMDService {
     @Override
     public String convertToHTML(String input) {
-        return new MarkedUpDocument(input).toString();
+        MarkedUpDocument doc = new MarkedUpDocument(input);
+
+        return doc.toString();
     }
 
     @Override

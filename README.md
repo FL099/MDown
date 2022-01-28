@@ -6,7 +6,8 @@ und mich verbessern möchte
 
 ## Bestandteile
 * Model - das ist die eigentliche Logik,
-  * ***DocumentElement*** beschreibt ein einzelnes Markup - Element (tag in html, "#" o.ä. in Markdown)
+  * ***DocumentElement*** beschreibt ein ~~einzelnes Markup - Element (tag in html, "#" o.ä. in Markdown)~~ Element oder
+  eine logische Gruppe von Elementen(ein Absatz, Tabelle, etc)
   * ***ElementTag*** beschreibt die unterstützten HTML Elemente
   * ***FileType*** beschreibt die Ausgabeformate
 * ***auth, controller, interfaces*** und ***services*** sind für die Funktion als Web-Anwendung da
@@ -35,3 +36,4 @@ zu anderen Formaten momentan verfügbar sind
 und wird im gewünschten Format retourniert (in diesem Fall HTML)
 
 ## Sonstiges
+

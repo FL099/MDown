@@ -1,11 +1,13 @@
 package at.fsix.mdown.model;
 
 public enum ElementTag {
+    document,
     a,
     article,
     b,
     blockquote,
     body,
+    br,
     button,
     caption,
     cite,

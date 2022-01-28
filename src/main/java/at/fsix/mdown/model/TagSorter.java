@@ -17,26 +17,26 @@ public class TagSorter {
         return name;
     }
 
-    public static String fromMD(String[] lines){
+    public static List<List<String>> fromMD(String[] lines){
+        List<List<String>> retList = new ArrayList<>();
         //The (?<=[char]{how often})|(?=[char]{how often}) - method ensures that the separators stay in the result array
         String MDRegex = "(?<=(?:\\*\\s))|(?=(?:\\*\\s))"+
-                "(?<=[*]{1,2})|(?=[*]{1,2})" +          // **bold** and *cursive* in +-Variant
-                "|(?<=[_]{1,2})|(?=[_]{1,2})" +         // __bold__ and _cursive_ in _-Variant TODO: so anpassen, dass es auch "kombi" aus _ + __ erkennt
+                "|(?<=[*]{1,2})|(?=[*]{1,2})" +          // **bold** and *cursive* in +-Variant
+                "|(?<=[_]{2})|(?=[_]{2})" +         // __bold__ and _cursive_ in _-Variant TODO: so anpassen, dass es auch "kombi" aus _ + __ erkennt
+                "|(?<=[_])|(?=[_])" +         // __bold__ and _cursive_ in _-Variant TODO: so anpassen, dass es auch "kombi" aus _ + __ erkennt
                 "|(?<=[~]{2})|(?=[~]{2})" +             // strikethrough
                 "|(?<=[#]{1,6})|(?=[#]{1,6})" +         // headings level 1-6
                 "|(?<=[`]{3})|(?=[`]{3})" +             // Code Fragment
                 "|(?<=[|])|(?=[|])";                    // Table
                 //TODO erweitern
 
-        String name =""; //Todo entfernen
         for (String line: lines) {
             List<String> tmp = new ArrayList<>(Arrays.asList(line.split(MDRegex)));
-            tmp.removeAll(Arrays.asList("", null));
-
-            //entfernen:
-            name += tmp;
+            //TODO: replace all "    "(four spaces or tab) with \t
+            tmp.removeAll(Arrays.asList(" ", "", null));
+            retList.add(tmp);
         }
-        return name;
+        return retList;
     }
 
     public static String fromPdf(String[] lines){return null;}

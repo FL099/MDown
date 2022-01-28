@@ -35,7 +35,7 @@ class MDownApplicationTests {
     void markedUpMDDocumentTestList(){
         String teststr = "#hi\n~~Hallo~~\n* z1\n* z2";
         MarkedUpDocument md = new MarkedUpDocument(teststr);
-        assertEquals("[#, hi][~~, Hallo, ~~][* , z1][* , z2]", md.getName());
+        assertEquals("[#, hi][~~, Hallo, ~~][*,  , z1][*,  , z2]", md.getName());
     }
 
     /*@Test
@@ -43,13 +43,13 @@ class MDownApplicationTests {
         String teststr = "#hi\n~~Hallo~~\n* z1\n* **z2**";
         MarkedUpDocument md = new MarkedUpDocument(teststr);
         assertEquals("[#, hi][~~, Hallo, ~~][* , z1][* , **, z2, **]", md.getName());
-    }*/
+    }
 
     @Test
     void markedUpHTMLDocumentTest(){
         String teststr = "<h1>hi</h1><a href=\"link.com\">ein link</a>";
         MarkedUpDocument md = new MarkedUpDocument(teststr);
         assertEquals("[<, h1, >, hi, <, /h1, >, <, a href=\"link.com\", >, ein link, <, /a, >]", md.getName());
-    }
+    }*/
 
 }
